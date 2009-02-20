@@ -8,7 +8,9 @@ module Feedzirra
     element :content
     element :summary
     element :published
-    element :created, :as => :published
+    element :created,  :as => :published
+    element :updated,  :as => :published
+    element :modified, :as => :published
     elements :category, :as => :categories, :value => :term
   end
 end

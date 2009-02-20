@@ -44,3 +44,7 @@ end
 def sample_feedburner_atom_entry_content
   File.read("#{File.dirname(__FILE__)}/sample_feeds/PaulDixExplainsNothingFirstEntryContent.xml")
 end
+
+def sample_google_news_atom_feed
+  File.read("#{File.dirname(__FILE__)}/sample_feeds/GoogleNewsSearch.xml")
+end
