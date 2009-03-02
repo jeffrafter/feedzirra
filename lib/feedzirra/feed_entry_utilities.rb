@@ -1,8 +1,10 @@
+require 'digest/md5'
+
 module Feedzirra
   module FeedEntryUtilities
     module Sanitize
       def sanitize!
-        self.replace(sanitize)
+        self.replace(sanitize) unless self.nil?
       end
       
       def sanitize
@@ -32,12 +34,21 @@ module Feedzirra
       @author.extend(Sanitize)
     end
     
+    def summary
+      @summary.extend(Sanitize)
+    end
+    
     def sanitize!
       self.title.sanitize!
       self.author.sanitize!
       self.content.sanitize!
+      self.summary.sanitize!
     end
     
+    def checksum
+      Digest::MD5.hexdigest("#{title}--#{url}--#{summary}--#{content}")
+    end    
+
     alias_method :last_modified, :published
   end
 end

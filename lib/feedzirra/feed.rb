@@ -112,8 +112,6 @@ module Feedzirra
             feed.last_modified = last_modified_from_header(c.header_str)
             responses[url] = feed
             options[:on_success].call(url, feed) if options.has_key?(:on_success)
-          else
-            puts "Error determining parser for #{url} - #{c.last_effective_url}"
           end
         end
         curl.on_failure do |c|
